@@ -145,10 +145,9 @@
 		</div>
 
 		<div class="product">
-			<img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820
-			-stock-illustration-photo-available-vector-icon-default.jpg" alt="Product 3">
-			<h2>Product 3</h2>
-			<p>In Stock: 0</p>
+			<img src="https://oldnavy.gap.com/webcontent/0052/403/869/cn52403869.jpg" alt="Jeans: $49.99">
+			<h2>Jeans: $49.99</h2>
+			<p>In Stock: 20</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
