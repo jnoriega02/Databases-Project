@@ -93,7 +93,7 @@
 		height: auto;
 		margin-bottom: 10px;
 	}
-	
+
 	.add-to-cart-button
 	{
 		background-color: #4CAF50;
@@ -154,11 +154,24 @@
 		</div>
             
 		<div class="product">
-			<img src="https://cdni.llbean.net/is/image/wim/507866_1207_41?hei=1095&wid
-			=950&resMode=sharp2&defaultImage=llbprod/507866_1207_41" alt="Cozy Hat">
+			<a href="product2.php">
+				<img src="https://cdni.llbean.net/is/image/wim/507866_1207_41?hei=1095&wid
+				=950&resMode=sharp2&defaultImage=llbprod/507866_1207_41" alt="Cozy Hat">
+			</a>
+
+			<div class="product-details">
 			<h2>Cozy Hat: $9.99</h2>
 			<p>In Stock: 15</p>
-			<button class="add-to-cart-button">Add to Cart</button>
+			<label for="quantity-product-1">Quantity:</label>
+			<select id="quantity-product-1" class="quantity-dropdown">
+
+            		<?php for ($i = 1; $i <= 100; $i++) { ?>
+                		<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+            		<?php } ?>
+
+        		</select>
+    			</div>
+    			<button class="add-to-cart-button" onclick="addToCart('product2')">Add to Cart</button>
 		</div>
 
 		<div class="product">
