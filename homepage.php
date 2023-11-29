@@ -145,49 +145,48 @@
 		</div>
 
 		<div class="product">
-			<img src="https://oldnavy.gap.com/webcontent/0052/403/869/cn52403869.jpg" alt="Jeans: $49.99">
+			<img src="https://img.freepik.com/premium-photo/female-jeans-mom-fit-isolated
+			-white-background-jeans-with-high-waist-casual-style_125869-2331.jpg" alt="Jeans">
 			<h2>Jeans: $49.99</h2>
 			<p>In Stock: 20</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
 		<div class="product">
-			<img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820
-			-stock-illustration-photo-available-vector-icon-default.jpg" alt="Product 4">
-			<h2>Product 4</h2>
-			<p>In Stock: 0</p>
+			<img src="https://www.converse.com/dw/image/v2/BCZC_PRD/on/demandware.static
+			/-/Sites-cnv-master-catalog/default/dw34a014b4/images/a_107/162050C_A_107X1.jpg?sw=964" alt="Converse">
+			<h2>Converse: $59.99</h2>
+			<p>In Stock: 17</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
 		<div class="product">
-			<img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820
-			-stock-illustration-photo-available-vector-icon-default.jpg" alt="Product 5">
-			<h2>Product 5</h2>
-			<p>In Stock: 0</p>
+			<img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1691181329
+			-71q57DvX2RL.jpg?crop=1.00xw:0.814xh;0,0.104xh&resize=980:*" alt="Cream Sweater">
+			<h2>Cream Sweater: $29.99</h2>
+			<p>In Stock: 15</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
 		<div class="product">
-			<img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820
-			-stock-illustration-photo-available-vector-icon-default.jpg" alt="Product 6">
-			<h2>Product 6</h2>
-			<p>In Stock: 0</p>
+			<img src="https://media.kohlsimg.com/is/image/kohls/5850895_Black_Fabric?wid=805&hei=805&op_sharpen=1" alt="Boots">
+			<h2>Boots: $40.99</h2>
+			<p>In Stock: 32</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
 		<div class="product">
-			<img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820
-			-stock-illustration-photo-available-vector-icon-default.jpg" alt="Product 7">
-			<h2>Product 7</h2>
-			<p>In Stock: 0</p>
+			<img src="https://jiffyshirts.imgix.net/f9447d7b5ba227.png?ixlib=rb-0.3.5&auto=format&fit=
+			fill&fill=solid&trim-color=FFFFFF&trim=color&trim-tol=8&w=307&h=480&q=80&dpr=2" alt="Sweatshirt">
+			<h2>Sweatshirt: $25.99 </h2>
+			<p>In Stock: 50</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
 		<div class="product">
-			<img src="https://st.depositphotos.com/2934765/53192/v/450/depositphotos_531920820
-			-stock-illustration-photo-available-vector-icon-default.jpg" alt="Product 8">
-			<h2>Product 8</h2>
-			<p>In Stock: 0</p>
+			<img src="https://m.media-amazon.com/images/I/71iHxbJXPBL._AC_SX679_.jpg" alt="Beanie">
+			<h2>Beanie: $12.99</h2>
+			<p>In Stock: 15</p>
 			<button class="add-to-cart-button">Add to Cart</button>
 		</div>
 
@@ -290,3 +289,4 @@
 	</main>
 </body>
 </html>
+
