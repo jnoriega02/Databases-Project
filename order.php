@@ -2,23 +2,21 @@
 <html>
 <head>
 	<style>
+		.order-confirmation {
+    			font-size: 20px;
+    			color: green;
+		}
 
-order-confirmation {
-    font-size: 20px;
-    color: green;
-}
+		.shipping-info {
+    			font-weight: bold;
+		}
 
-.shipping-info {
-    font-weight: bold;
-}
-
-.customer-name {
-    text-transform: uppercase;
-}
-
-
-
-
+		.customer-name {
+    			text-transform: uppercase;
+		}
+	</style>
+</head>
+<body>
 
 
 
@@ -55,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                	$stmt->execute();
 
 
-		$status = 'Placed';
+		$status = 'Processing';
 		$total = 6;
 		$date = date('Y-m-d H:i:s');
 		$empID = 6;
@@ -70,13 +68,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         	$stmt->bindParam(':CustName', $Name);
         	$stmt->execute();
 
-        	 $lastOrderId = $p->lastInsertId();
+		$lastOrderId = $p->lastInsertId();
 
 
-       		echo "Order placed, thanks!<br>";
-        	echo "<hr>";
-        	echo "Shipping to: $Name, $Address<br>";
-        	echo "Order Confirmation Number: $lastOrderId<br>";
+		echo "<div class='order-confirmation'>Order placed, thanks!</div><hr>";
+	        echo "<div class='shipping-info'>Shipping to: <span class='customer-name'>" . htmlspecialchars($Name) . "</span>, " . htmlspecialchars($Address) . "<br>";
+        	echo "Tracking Number: " . htmlspecialchars($lastOrderId) . "</div>";
+		echo "Order Status: Processing<br>";
+		echo "Amount Paid: $" . htmlspecialchars($total) . "</div>";
 
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
