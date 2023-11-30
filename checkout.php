@@ -207,7 +207,7 @@ $pass = "2002Dec08";
 $serv = "courses";
 $d = "z1917876";
 
-try { // if something goes wrong, an exception is thrown
+try {
 	$sn = "mysql:host=$serv;dbname=$d";
 	$p = new PDO($sn, $user, $pass);
 	$p->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

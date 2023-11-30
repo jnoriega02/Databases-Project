@@ -1,15 +1,34 @@
-
-<a href="homepage.php"><button class="my-button">Back To Homepage</button></a>
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
         <title>Cart Page</title>
         <style>
+
+		.return-to-cart{
+                        text-align: center;
+                        margin-bottom: 20px;
+                }
+
+                .return-button{
+                        background-color: #0000000;
+                        display: inline-block;
+                        font-weight: bold;
+                        font-size: 17px;
+                        margin-bottom: 10px;
+                }
+
+		.header{
+                        text-align: left;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        font-size: 30px;
+                        color: #000000;
+                        font-weight: bold;
+                        border-bottom: 1px solid #ccc;
+                        padding-bottom: 10px;
+		}
+
+
 		.right-column{
                         display: flex;
                         flex-direction: column;
@@ -37,6 +56,19 @@
 	</style>
 </head>
 <body>
+
+ <div class="header">
+                Store Name Checkout
+
+        </div>
+
+
+
+        <div class="return-cart-button">
+                <a href="homepage.php" class="return-button"> < Return to Cart</a>
+        </div>
+
+
 
 <div clas="right-column">
                 <div class="box">
