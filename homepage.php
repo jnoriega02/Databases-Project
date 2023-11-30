@@ -52,15 +52,15 @@
         }
 
 
-	
-		.button-container img, .cart-button img {
+
+	.button-container img, .cart-button img {
        		width: 30px; 
         	height: 30px;
         	object-fit: contain; 
     	}
 
 
-		.products-container {
+       .products-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* This creates 4 columns */
             gap: 20px; /* This adds space between the items */
@@ -76,7 +76,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-			justify-content: space-between;
+	    justify-content: space-between;
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease-in-out;
