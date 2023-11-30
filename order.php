@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	try {
         	$stmt = $p->prepare("INSERT INTO PaymentInfo (CardNumber, Name, Address, ZipCode, SecurityCode) VALUES (:CardNumber, :Name, :Address, :ZipCode, :SecurityCode)");
-		$stmt->bindParam(':CardNumber', $CardNumber);
+			$stmt->bindParam(':CardNumber', $CardNumber);
         	$stmt->bindParam(':Name', $Name);
         	$stmt->bindParam(':Address', $Address);
         	$stmt->bindParam(':ZipCode', $ZipCode);
@@ -54,7 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 		$status = 'Processing';
-		$total = 6;
+		$total = 8;
+		$stmt = $p->prepare("INSERT INTO Cart (Total) VALUES (:Total)");
+		$stmt->bindParam(':Total', $total);
+		
 		$date = date('Y-m-d H:i:s');
 		$empID = 6;
 
