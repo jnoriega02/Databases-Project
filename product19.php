@@ -157,17 +157,6 @@
                                 The best socks to go with your cozy fits.
                         </p>
 
-                        <label for="quantity-product-19">Quantity:</label>
-                        <select id="quantity-product-19" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product19')">Add to Cart</button>
-
                 </div>
         </main>
 </body>

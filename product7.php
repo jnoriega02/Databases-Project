@@ -157,9 +157,6 @@
                                 A baggy green sweatshirt.
                         </p>
 
-                        <label for="quantity-product-7">Quantity:</label>
-                        <select id="quantity-product-7" class="quantity-dropdown">
-
                 </div>
         </main>
 </body>

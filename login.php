@@ -13,10 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate the username and password (you should add more secure validation)
     if ($username && $password) {
         // Check the database for the user
-        $stmt = $p->prepare("SELECT * FROM EMPLOYEE WHERE Name = :username");
+        $stmt = $p->prepare("SELECT * FROM EMPLOYEE WHERE LOWER (Name) = LOWER(:username)");
         $stmt->bindParam(':username', $username);
         $stmt->execute();
-
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Debug information
@@ -25,10 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Fetched user data: " . json_encode($user) . "<br>";
 
         if ($user) {
-            // Debug information
-            echo "Hashed Password in the Database: " . $user['Password'] . "<br>";
-
-            if (password_verify($password, $user['Password'])) {
+            
+            if ($password === $user['Password']) {
                 // Login successful, set session variables
                 $_SESSION['username'] = $username;
                 $_SESSION['role'] = $user['ROLE'];

@@ -157,17 +157,6 @@
                                 A black turtleneck sweater that goes with almost anything.
                         </p>
 
-                        <label for="quantity-product-13">Quantity:</label>
-                        <select id="quantity-product-13" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product13')">Add to Cart</button>
-
                 </div>
         </main>
 </body>

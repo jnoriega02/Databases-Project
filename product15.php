@@ -157,17 +157,6 @@
                                 A thick flannel jacket great for cold days.
                         </p>
 
-                        <label for="quantity-product-15">Quantity:</label>
-                        <select id="quantity-product-15" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product15')">Add to Cart</button>
-
                 </div>
         </main>
 </body>

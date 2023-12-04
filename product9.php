@@ -156,17 +156,6 @@
                                 A green sweater with mushrooms on it.
                         </p>
 
-                        <label for="quantity-product-1">Quantity:</label>
-                        <select id="quantity-product-1" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product9')">Add to Cart</button>
-
                 </div>
         </main>
 </body>

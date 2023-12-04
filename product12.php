@@ -157,17 +157,6 @@
                                 Brown corduroy pants good for the fall.
                         </p>
 
-                        <label for="quantity-product-12">Quantity:</label>
-                        <select id="quantity-product-12" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product12')">Add to Cart</button>
-
                 </div>
         </main>
 </body>

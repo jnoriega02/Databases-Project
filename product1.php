@@ -5,11 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
 
-        body
+        header
         {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
+                display: flex;
+		align-items: center;
+		justify-content: space-between;
+		text-align: left;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		padding: 0 10px;
+		font-size: 30px;
+		color: #000000;
+		font-weight: bold;
+		border-bottom: 1px solid #ccc;
         }
 
         main
@@ -61,15 +69,6 @@
                 border-radius: 4px;
                 cursor: pointer;
                 font-size: 14px;
-        }
-
-        header
-        {
-                background-color: #fff;
-                padding: 10px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
         }
 
         .button-container

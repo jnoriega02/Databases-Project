@@ -157,17 +157,6 @@
                                 A sherpa jacket with mountains on it.
                         </p>
 
-                        <label for="quantity-product-16">Quantity:</label>
-                        <select id="quantity-product-16" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product16')">Add to Cart</button>
-
                 </div>
         </main>
 </body>
