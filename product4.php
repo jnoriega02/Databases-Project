@@ -141,19 +141,20 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Converse</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+                <img src="https://www.converse.com/dw/image/v2/BCZC_PRD/on/demandware.static
+		/-/Sites-cnv-master-catalog/default/dw34a014b4/images/a_107/162050C_A_107X1.jpg?sw=964" alt="Converse">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $59.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                The best shoes that go with every fit.
                         </p>
 
                 </div>

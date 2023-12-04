@@ -141,20 +141,24 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Sweatshirt</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+                <img src="https://jiffyshirts.imgix.net/f9447d7b5ba227.png?ixlib=rb-0.3.5&auto=format&fit=
+		fill&fill=solid&trim-color=FFFFFF&trim=color&trim-tol=8&w=307&h=480&q=80&dpr=2" alt="sweatshirt">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $25.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                A baggy green sweatshirt.
                         </p>
+
+                        <label for="quantity-product-7">Quantity:</label>
+                        <select id="quantity-product-7" class="quantity-dropdown">
 
                 </div>
         </main>

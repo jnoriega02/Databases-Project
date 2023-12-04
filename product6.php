@@ -141,19 +141,19 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Boots</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+                <img src="https://media.kohlsimg.com/is/image/kohls/5850895_Black_Fabric?wid=805&hei=805&op_sharpen=1" alt="boots">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $40.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                Winter boots perfect for trudging through snow.
                         </p>
 
                 </div>

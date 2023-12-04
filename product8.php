@@ -141,20 +141,31 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Beanie</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+                <img src="https://m.media-amazon.com/images/I/71iHxbJXPBL._AC_SX679_.jpg" alt="Beanie">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $12.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                A green hat, try not to mix it with the green sweatshirt.
                         </p>
+
+                        <label for="quantity-product-8">Quantity:</label>
+                        <select id="quantity-product-8" class="quantity-dropdown">
+
+                        <?php for ($i = 1; $i <= 100; $i++) { ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php } ?>
+
+                        </select>
+
+                        <button class="add-to-cart-button" onclick="addToCart('product8')">Add to Cart</button>
 
                 </div>
         </main>

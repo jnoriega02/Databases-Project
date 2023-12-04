@@ -141,23 +141,34 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Black Turtleneck</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+		<img src="https://static.halsbrook.com/media/catalog/product/majestic-blackmodalturtlenecktop
+		-1413386443-product.jpg" alt="Black Turtleneck">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $14.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                A black turtleneck sweater that goes with almost anything.
                         </p>
+
+                        <label for="quantity-product-13">Quantity:</label>
+                        <select id="quantity-product-13" class="quantity-dropdown">
+
+                        <?php for ($i = 1; $i <= 100; $i++) { ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php } ?>
+
+                        </select>
+
+                        <button class="add-to-cart-button" onclick="addToCart('product13')">Add to Cart</button>
 
                 </div>
         </main>
 </body>
 </html>
-

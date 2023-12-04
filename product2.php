@@ -151,22 +151,11 @@
                 <div class="product-details box">
 
                         <p>Price: $9.99</p>
-                        <p>In Stock: 15</p>
+                        <p>In Stock: </p>
 
                         <p>
                                 This hat is perfect for winter weather and is one size fits all.
                         </p>
-
-                        <label for="quantity-product-1">Quantity:</label>
-                        <select id="quantity-product-1" class="quantity-dropdown">
-
-                        <?php for ($i = 1; $i <= 100; $i++) { ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php } ?>
-
-                        </select>
-
-                        <button class="add-to-cart-button" onclick="addToCart('product1')">Add to Cart</button>
 
                 </div>
         </main>

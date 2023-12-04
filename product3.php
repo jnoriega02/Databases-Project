@@ -141,19 +141,20 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Jeans</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+                <img src="https://img.freepik.com/premium-photo/female-jeans-mom-fit-isolated
+		-white-background-jeans-with-high-waist-casual-style_125869-2331.jpg" alt="Jeans">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $49.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                Basic jeans to complete a simple fit.
                         </p>
 
                 </div>

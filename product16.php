@@ -141,11 +141,12 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Mountain Jacket</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+		<img src="https://www.marinelayer.com/cdn/shop/files/M_H1_Archive_Andes_Sherpa
+		_Pullover_Mountain_Scene_4230103092265-Final-Web_700x.jpg?v=1697148787" alt="Mountain Jacket">
 
                 <div class="product-details box">
 
@@ -153,11 +154,21 @@
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                A sherpa jacket with mountains on it.
                         </p>
+
+                        <label for="quantity-product-16">Quantity:</label>
+                        <select id="quantity-product-16" class="quantity-dropdown">
+
+                        <?php for ($i = 1; $i <= 100; $i++) { ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php } ?>
+
+                        </select>
+
+                        <button class="add-to-cart-button" onclick="addToCart('product16')">Add to Cart</button>
 
                 </div>
         </main>
 </body>
 </html>
-

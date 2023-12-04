@@ -141,11 +141,12 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Cream Sweater</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+                <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1691181329
+		-71q57DvX2RL.jpg?crop=1.00xw:0.814xh;0,0.104xh&resize=980:*" alt="Cream Sweater">
 
                 <div class="product-details box">
 
@@ -153,7 +154,7 @@
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                A neutral color sweater that can go in any wardrobe.
                         </p>
 
                 </div>

@@ -141,23 +141,34 @@
         </header>
 
         <main>
-                <h1>Cozy Sweater</h1>
+                <h1>Winter Sweater</h1>
 
                 <div class="product-container">
 
-                <img src="https://m.media-amazon.com/images/I/71OUch0LLPL._AC_SX679_.jpg" alt="Product 1">
+		<img src="https://img.kwcdn.com/garner-api/transfer/2023-10-13/037fed16b064005058647a746be3f868
+		.jpg?imageView2/2/w/800/q/70" alt="Winter Sweater">
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
+                        <p>Price: $49.99</p>
                         <p>In Stock: </p>
 
                         <p>
-                                This sweater is perfect for winter weather and is one size fits all.
+                                A warm and cozy sweater for the holidays.
                         </p>
+
+                        <label for="quantity-product-18">Quantity:</label>
+                        <select id="quantity-product-18" class="quantity-dropdown">
+
+                        <?php for ($i = 1; $i <= 100; $i++) { ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php } ?>
+
+                        </select>
+
+                        <button class="add-to-cart-button" onclick="addToCart('product18')">Add to Cart</button>
 
                 </div>
         </main>
 </body>
 </html>
-
