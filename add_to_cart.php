@@ -17,9 +17,9 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ProdID']) && isset($_POST['Amount'])) {
         $prodID = $_POST['ProdID'];
         $amountToAdd = $_POST['Amount'];
-        
+
         // Fetch current stock
-        $stockQuery = $pdo->prepare("SELECT Amount FROM PRODUCT WHERE ProdID = ?");
+        $stockQuery = $pdo->prepare("SELECT Amount, Cost FROM PRODUCT WHERE ProdID = ?");
         $stockQuery->execute([$prodID]);
         $stockResult = $stockQuery->fetch(PDO::FETCH_ASSOC);
 
@@ -32,15 +32,19 @@ try {
             $updateStock = $pdo->prepare("UPDATE PRODUCT SET Amount = ? WHERE ProdID = ?");
             $updateStock->execute([$newAmount, $prodID]);
 
+            // Insert into the Cart table
+            $cartID = isset($_SESSION['cartID']) ? $_SESSION['cartID'] : md5(uniqid(rand(), true));
+            $_SESSION['cartID'] = $cartID;
+
+            $insertCart = $pdo->prepare("INSERT INTO Cart (CartID, ProdID, Quantity) VALUES (?, ?, ?)");
+            $insertCart->execute([$cartID, $prodID, $amountToAdd]);
+
             // Update session cart
             if (isset($_SESSION['cart'][$prodID])) {
                 $_SESSION['cart'][$prodID] += $amountToAdd;
             } else {
                 $_SESSION['cart'][$prodID] = $amountToAdd;
             }
-
-            // Add to cart logic here...
-            // Since this is a simple example, the cart logic is omitted for brevity
 
             // Redirect to homepage without changing the page
             header('Location: homepage.php' . $_SERVER['PHP_SELF']);
