@@ -4,6 +4,21 @@
 <head>
     <title>Cart Page</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+        }
+
         .return-to-cart {
             text-align: center;
             margin-bottom: 20px;
@@ -26,6 +41,9 @@
             font-weight: bold;
             font-size: 17px;
             margin-bottom: 10px;
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
         }
 
         .header {
@@ -42,6 +60,7 @@
         .right-column {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         .order-summary li {
@@ -74,134 +93,164 @@
         .quantity-input {
             width: 50px;
         }
+
+        .checkout-box {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #3498db;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .checkout-button {
+            background-color: #ffffff;
+            color: #3498db;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="header">
+            Threads and Trends
+        </div>
 
-    <div class="header">
-        Store Name Checkout
-    </div>
+        <div class="return-cart-button">
+            <a href="homepage.php" class="return-button"> < Return to Homepage</a>
+        </div>
 
-    <div class="return-cart-button">
-        <a href="homepage.php" class="return-button"> < Return to Cart</a>
-    </div>
+        <div class="right-column">
+            <?php
+            session_start();
 
-    <div class="right-column">
-        <?php
-        session_start();
+            // Database connection variables
+            $user = "z1917876";
+            $pass = "2002Dec08";
+            $serv = "courses";
+            $d = "z1917876";
 
-        // Database connection variables
-        $user = "z1917876";
-        $pass = "2002Dec08";
-        $serv = "courses";
-        $d = "z1917876";
+            try {
+                $pdo = new PDO("mysql:host=$serv;dbname=$d", $user, $pass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        try {
-            $pdo = new PDO("mysql:host=$serv;dbname=$d", $user, $pass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                if (isset($_POST['clearCart'])) {
+                    // Clear the cart
+                    foreach ($_SESSION['cart'] as $prodID => $quantity) {
+                        // Retrieve product info
+                        $stmt = $pdo->prepare("SELECT Amount FROM PRODUCT WHERE ProdID = ?");
+                        $stmt->execute([$prodID]);
+                        $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if (isset($_POST['clearCart'])) {
-                // Clear the cart
-                foreach ($_SESSION['cart'] as $prodID => $quantity) {
-                    // Retrieve product info
-                    $stmt = $pdo->prepare("SELECT Amount FROM PRODUCT WHERE ProdID = ?");
-                    $stmt->execute([$prodID]);
-                    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                    if ($product) {
-                        // Update product amount in the database
-                        $newAmount = $product['Amount'] + $quantity;
-                        $updateStmt = $pdo->prepare("UPDATE PRODUCT SET Amount = ? WHERE ProdID = ?");
-                        $updateStmt->execute([$newAmount, $prodID]);
+                        if ($product) {
+                            // Update product amount in the database
+                            $newAmount = $product['Amount'] + $quantity;
+                            $updateStmt = $pdo->prepare("UPDATE PRODUCT SET Amount = ? WHERE ProdID = ?");
+                            $updateStmt->execute([$newAmount, $prodID]);
+                        }
                     }
+
+                    // Clear the cart session
+                    $_SESSION['cart'] = array();
                 }
 
-                // Clear the cart session
-                $_SESSION['cart'] = array();
+                if (!empty($_SESSION['cart'])) {
+                    // Handle quantity updates
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['prodID']) && isset($_POST['quantity'])) {
+                        $prodID = $_POST['prodID'];
+                        $newQuantity = $_POST['quantity'];
+
+                        // Fetch current stock
+                        $stockQuery = $pdo->prepare("SELECT Amount FROM PRODUCT WHERE ProdID = ?");
+                        $stockQuery->execute([$prodID]);
+                        $stockResult = $stockQuery->fetch(PDO::FETCH_ASSOC);
+
+                        if ($stockResult && $newQuantity <= $stockResult['Amount']) {
+                            // Update session cart
+                            $_SESSION['cart'][$prodID] = $newQuantity;
+
+                            // Update product amount in the database
+                            $updateStmt = $pdo->prepare("UPDATE PRODUCT SET Amount = ? WHERE ProdID = ?");
+                            $updateStmt->execute([$newQuantity, $prodID]);
+                        } else {
+                            echo "Invalid quantity or not enough stock available.";
+                        }
+                    }
+
+                    // Display order summary
+                    $totalCost = 0;
+                    $totalItems = 0;
+
+                    echo "<div class='box'>";
+                    echo "<h2>Cart</h2>";
+                    echo "<form method='post' action='cart.php'>";
+                    echo "<input type='submit' name='clearCart' value='Clear Cart' class='clear-cart-button'>";
+                    echo "</form>";
+                    echo "<ul class='order-summary'>";
+
+                    foreach ($_SESSION['cart'] as $prodID => $quantity) {
+                        $stmt = $pdo->prepare("SELECT Name, Cost, Amount FROM PRODUCT WHERE ProdID = ?");
+                        $stmt->execute([$prodID]);
+                        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        if ($product) {
+                            // Adjust the quantity if it exceeds available stock
+                            $quantity = min($quantity, $product['Amount']);
+                            $_SESSION['cart'][$prodID] = $quantity; // Update the session cart
+
+                            $itemCost = $product['Cost'] * $quantity;
+                            $totalCost += $itemCost;
+                            $totalItems += $quantity;
+
+                            echo "<li>";
+                            echo htmlspecialchars($product['Name']) . " - $" . htmlspecialchars($product['Cost']) . " x ";
+                            echo "<form method='post' action='cart.php'>";
+                            echo "<input type='hidden' name='prodID' value='$prodID'>";
+                            echo "<input type='number' name='quantity' value='$quantity' min='1' max='{$product['Amount']}' class='quantity-input' onchange='this.form.submit()'>";
+                            echo "</form>";
+                            echo "<span class='product-total'>  $" . htmlspecialchars(number_format($itemCost, 2)) . "</span>";
+                            echo "</li>";
+                        }
+                    }
+
+                    // Calculating additional charges
+                    $taxRate = 0.0635; // 6.35%
+                    $taxes = $totalCost * $taxRate;
+
+                    $shippingRate = 0.08; // 8%
+                    $shipping = $totalCost * $shippingRate;
+
+                    $finalTotal = $totalCost + $shipping + $taxes;
+
+                    echo "<li><span class='label'>Number of Items:</span> <span class='order-value'>" . $totalItems . "</span></li>";
+                    echo "<li><span class='label'>Shipping:</span> <span class='order-value'>$" . number_format($shipping, 2) . "</span></li>";
+                    echo "<li><span class='label'>Estimated Taxes:</span> <span class='order-value'>$" . number_format($taxes, 2) . "</span></li>";
+                    echo "<li><span class='label'>Order Total:</span> <span class='order-value'>$" . number_format($finalTotal, 2) . "</span></li>";
+                    echo "</ul>";
+                    echo "</div>";
+                    echo "<div class='checkout-box'>";
+                    echo "<form method='post' action='checkout.php'>";
+                    echo "<input type='submit' name='checkout' value='Checkout' class='checkout-button'>";
+                    echo "<input type='hidden' name='total' value='" . htmlspecialchars(number_format($finalTotal, 2)) . "'>";
+                    echo "<input type='hidden' name='cartID' value='" . htmlspecialchars($_SESSION['cartID']) . "'>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
+                } else {
+                    echo "Your cart is empty.";
+                }
+            } catch (PDOException $ex) {
+                echo "Connection to the database failed: " . $ex->getMessage();
             }
-
-            if (!empty($_SESSION['cart'])) {
-                // Handle quantity updates
-                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['prodID']) && isset($_POST['quantity'])) {
-                    $prodID = $_POST['prodID'];
-                    $newQuantity = $_POST['quantity'];
-
-                    // Fetch current stock
-                    $stockQuery = $pdo->prepare("SELECT Amount FROM PRODUCT WHERE ProdID = ?");
-                    $stockQuery->execute([$prodID]);
-                    $stockResult = $stockQuery->fetch(PDO::FETCH_ASSOC);
-
-                    if ($stockResult && $newQuantity <= $stockResult['Amount']) {
-                        // Update session cart
-                        $_SESSION['cart'][$prodID] = $newQuantity;
-
-                        // Update product amount in the database
-                        $updateStmt = $pdo->prepare("UPDATE PRODUCT SET Amount = ? WHERE ProdID = ?");
-                        $updateStmt->execute([$newQuantity, $prodID]);
-                    } else {
-                        echo "Invalid quantity or not enough stock available.";
-                    }
-                }
-
-                // Display order summary
-                $totalCost = 0;
-                $totalItems = 0;
-
-                echo "<div class='box'>";
-                echo "<h2>Order Summary</h2>";
-                echo "<form method='post' action='cart.php'>";
-                echo "<input type='submit' name='clearCart' value='Clear Cart' class='clear-cart-button'>";
-                echo "</form>";
-                echo "<ul class='order-summary'>";
-
-                foreach ($_SESSION['cart'] as $prodID => $quantity) {
-                    $stmt = $pdo->prepare("SELECT Name, Cost, Amount FROM PRODUCT WHERE ProdID = ?");
-                    $stmt->execute([$prodID]);
-                    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                    if ($product) {
-                        // Adjust the quantity if it exceeds available stock
-                        $quantity = min($quantity, $product['Amount']);
-                        $_SESSION['cart'][$prodID] = $quantity; // Update the session cart
-
-                        $itemCost = $product['Cost'] * $quantity;
-                        $totalCost += $itemCost;
-                        $totalItems += $quantity;
-
-                        echo "<li>";
-                        echo htmlspecialchars($product['Name']) . " - $" . htmlspecialchars($product['Cost']) . " x ";
-                        echo "<form method='post' action='cart.php'>";
-                        echo "<input type='hidden' name='prodID' value='$prodID'>";
-                        echo "<input type='number' name='quantity' value='$quantity' min='1' max='{$product['Amount']}' class='quantity-input' onchange='this.form.submit()'>";
-                        echo "</form>";
-                        echo "<span class='product-total'>  $" . htmlspecialchars(number_format($itemCost, 2)) . "</span>";
-                        echo "</li>";
-                    }
-                }
-
-                // Calculating additional charges
-                $taxRate = 0.0635; // 6.35%
-                $taxes = $totalCost * $taxRate;
-
-                $shippingRate = 0.08; // 8%
-                $shipping = $totalCost * $shippingRate;
-
-                $finalTotal = $totalCost + $shipping + $taxes;
-
-                echo "<li><span class='label'>Number of Items:</span> <span class='order-value'>" . $totalItems . "</span></li>";
-                echo "<li><span class='label'>Shipping:</span> <span class='order-value'>$" . number_format($shipping, 2) . "</span></li>";
-                echo "<li><span class='label'>Estimated Taxes:</span> <span class='order-value'>$" . number_format($taxes, 2) . "</span></li>";
-                echo "<li><span class='label'>Order Total:</span> <span class='order-value'>$" . number_format($finalTotal, 2) . "</span></li>";
-                echo "</ul>";
-                echo "</div>";
-            } else {
-                echo "Your cart is empty.";
-            }
-        } catch (PDOException $ex) {
-            echo "Connection to the database failed: " . $ex->getMessage();
-        }
-        ?>
+            ?>
+        </div>
     </div>
 </body>
 

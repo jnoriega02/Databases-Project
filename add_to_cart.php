@@ -36,8 +36,13 @@ try {
             $cartID = isset($_SESSION['cartID']) ? $_SESSION['cartID'] : md5(uniqid(rand(), true));
             $_SESSION['cartID'] = $cartID;
 
-            $insertCart = $pdo->prepare("INSERT INTO Cart (CartID, ProdID, Quantity) VALUES (?, ?, ?)");
+            $insertCart = $pdo->prepare("INSERT INTO Cart (CartID, ProdID, Amount) VALUES (?, ?, ?)");
             $insertCart->execute([$cartID, $prodID, $amountToAdd]);
+
+            if ($insertCart->errorCode() !== '00000') {
+                $errorInfo = $insertCart->errorInfo();
+                echo "Error inserting into Cart table: " . $errorInfo[2];
+            }
 
             // Update session cart
             if (isset($_SESSION['cart'][$prodID])) {
@@ -45,6 +50,9 @@ try {
             } else {
                 $_SESSION['cart'][$prodID] = $amountToAdd;
             }
+
+            // Debugging: Output a success message
+            echo "Item successfully added to the Cart table.";
 
             // Redirect to homepage without changing the page
             header('Location: homepage.php' . $_SERVER['PHP_SELF']);
