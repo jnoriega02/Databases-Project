@@ -39,10 +39,7 @@ try {
             $insertCart = $pdo->prepare("INSERT INTO Cart (CartID, ProdID, Amount) VALUES (?, ?, ?)");
             $insertCart->execute([$cartID, $prodID, $amountToAdd]);
 
-            if ($insertCart->errorCode() !== '00000') {
-                $errorInfo = $insertCart->errorInfo();
-                echo "Error inserting into Cart table: " . $errorInfo[2];
-            }
+            
 
             // Update session cart
             if (isset($_SESSION['cart'][$prodID])) {
