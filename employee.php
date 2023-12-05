@@ -23,8 +23,8 @@ $stmt->execute();
     <div class="text-center">
         <header>
             <h1>Orders</h1>
+            <h2>Name of Store</h2>
         </header>
-        <h2>Name of Store</h2>
     </div>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-3">

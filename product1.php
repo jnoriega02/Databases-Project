@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Product Details - Cozy Sweater</title>
         <style>
 
         header
@@ -27,7 +28,7 @@
 
         h1
         {
-                color: #333;
+                color: #000000;
         }
 
         .product-container
@@ -117,7 +118,40 @@
                 height: auto;
         }
 
-        </style>
+	</style>
+
+<?php
+
+session_start();
+$user = "z1917876";
+$pass = "2002Dec08";
+$serv = "courses";
+$d = "z1917876";
+
+try
+{
+	$sn = "mysql:host=$serv;dbname=$d";
+	$pdo = new PDO($sn, $user, $pass);
+	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$productName = 'Cozy Sweater';
+
+	echo "<div class='products-container'>";
+	$stmt = $pdo->prepare("SELECT * FROM PRODUCT WHERE Name = :productName");
+	$stmt->bindParam(':productName', $productName, PDO::PARAM_STR);
+	$stmt->execute();
+
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+	{
+		$productPrice = $row['Cost'];
+		$productAmount = $row['Amount'];
+	}
+}
+catch (PDOException $e)
+{
+	echo "Connection failed: " . $e->getMessage();
+}
+?>
+
 </head>
 <body>
         <header>
@@ -148,8 +182,8 @@
 
                 <div class="product-details box">
 
-                        <p>Price: $29.99</p>
-                        <p>In Stock: </p>
+                        <?php echo "<p>Price: $" . htmlspecialchars($productPrice) . "</p>"; ?>
+			<?php echo "<p>In Stock: " . htmlspecialchars($productAmount) . "</p>"; ?>
 
                         <p>
                                 This sweater is perfect for winter weather and is one size fits all.

@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Product Details - Mushroom Sweater</title>
         <style>
 
-        body
+        header
         {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding: 0 10px;
+                font-size: 30px;
+                color: #000000;
+                font-weight: bold;
+                border-bottom: 1px solid #ccc;
         }
 
         main
@@ -19,7 +28,7 @@
 
         h1
         {
-                color: #333;
+                color: #00000;
         }
 
         .product-container
@@ -61,15 +70,6 @@
                 border-radius: 4px;
                 cursor: pointer;
                 font-size: 14px;
-        }
-
-        header
-        {
-                background-color: #fff;
-                padding: 10px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
         }
 
         .button-container
@@ -118,7 +118,41 @@
                 height: auto;
         }
 
-        </style>
+	</style>
+
+<?php
+
+session_start();
+$user = "z1917876";
+$pass = "2002Dec08";
+$serv = "courses";
+$d = "z1917876";
+
+try
+{
+        $sn = "mysql:host=$serv;dbname=$d";
+        $pdo = new PDO($sn, $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $productName = 'Mushroom Sweater';
+
+        echo "<div class='products-container'>";
+        $stmt = $pdo->prepare("SELECT * FROM PRODUCT WHERE Name = :productName");
+        $stmt->bindParam(':productName', $productName, PDO::PARAM_STR);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+        {
+		$productPrice = $row['Cost'];
+                $productAmount = $row['Amount'];
+        }
+}
+catch (PDOException $e)
+{
+        echo "Connection failed: " . $e->getMessage();
+}
+
+?>
+
 </head>
 <body>
         <header>
@@ -149,8 +183,8 @@
 
                 <div class="product-details box">
 
-                        <p>Price: $25.99</p>
-                        <p>In Stock: </p>
+                        <?php echo "<p>Price: $" . htmlspecialchars($productPrice) . "</p>"; ?>
+			<?php echo "<p>In Stock: " . htmlspecialchars($productAmount) . "</p>"; ?>
 
                         <p>
                                 A green sweater with mushrooms on it.
