@@ -131,7 +131,7 @@
 
 <?php
 
-//session_start();
+session_start();
 
 $user = "z1917876";
 $pass = "2002Dec08";
@@ -192,12 +192,10 @@ $productImages = array
 
 	"Winter Socks"=> "https://oldnavy.gap.com/webcontent/0054/226/614/cn54226614.jpg"
 );
-    
+    if (!isset($_SESSION['cartID'])) {
+    $_SESSION['cartID'] = 1; // Starting cart ID value
+    }
 
-    $user = "z1917876";
-    $pass = "2002Dec08";
-    $serv = "courses";
-    $d = "z1917876";
 
     try {
         $pdo = new PDO("mysql:host=$serv;dbname=$d", $user, $pass);
