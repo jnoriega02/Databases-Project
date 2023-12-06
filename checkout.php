@@ -123,10 +123,7 @@
 </head>
 <body>
 
-        <div class="header">
-                Store Name Checkout
-
-        </div>
+        <div class="header"> Store Name Checkout </div>
 
 
 
@@ -146,6 +143,7 @@
                                         <input type="submit" value="Search">
                                 </form>
                         </div>
+
                         <div class="box payment-box">
                                 <h2>Pay $27.50</h2>
                                 <div class="payment-option">Credit Card or Debit Card</div>
@@ -155,30 +153,47 @@
                                                 <img src="data:image/png;base64,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" alt="Discover" style="width:50px; height:30px; margin-right: 5px;">
                                                 <img src="data:image/png;base64,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" alt="Amex" style="width:50px; height:30px; margin-right: 5px;">
                                 </div>
-                                <form action="order.php" method="post">
-                                        <label for="CardNumber">Card Number:</label><br>
-                                        <input type="number" id="CardNumber" name="CardNumber" required><br>
 
-                                        <div class="flex-row">
-                                                <div class="flex-column">
-                                                        <label for="ZipCode">ZipCode:</label><br>
-                                                        <input type="number" id="ZipCode" name="ZipCode" required>
-                                                </div>
 
-                                                <div class="flex-columm">
-                                                        <label for="SecurityCode">Security Code:</label>
-                                                        <input type="number" id="SecurityCode" name="SecurityCode" required>
-                                                </div>
-                                        </div>
+<form action="order.php" method="post">
+    <!-- Hidden Fields -->
+    <input type="hidden" name="Status" value="Pending">
+    <input type="hidden" name="Total" value="27.50">
+    <input type="hidden" name="EmpID" value="123"> <!-- Replace 123 with actual EmpID -->
+    <input type="hidden" name="Date" value="<?php echo date('Y-m-d H:i:s'); ?>">
+    <input type="hidden" name="CustName" value="John Doe"> <!-- Replace with actual customer name if available -->
 
-                                        <label for="Name">Name on Card:</label><br>
-                                        <input type="text" id="Name" name="Name" required><br>
+    <!-- Ship Address Field -->
+    <label for="ShipAddress">Shipping Address:</label><br>
+    <input type="text" id="ShipAddress" name="ShipAddress" required><br>
 
-                                        <label for="Address">Address:</label><br>
-                                        <input type="text" id="Address" name="Address" required><br>
+    <!-- Card Details -->
+    <label for="CardNumber">Card Number:</label><br>
+    <input type="number" id="CardNumber" name="CardNumber" required><br>
 
-                                        <input type="submit" value="Submit Payment">
-                                </form>
+    <div class="flex-row">
+        <div class="flex-column">
+            <label for="ZipCode">ZipCode:</label><br>
+            <input type="number" id="ZipCode" name="ZipCode" required>
+        </div>
+
+        <div class="flex-column">
+            <label for="SecurityCode">Security Code:</label>
+            <input type="number" id="SecurityCode" name="SecurityCode" required>
+        </div>
+    </div>
+
+    <label for="Name">Name on Card:</label><br>
+    <input type="text" id="Name" name="Name" required><br>
+
+    <label for="Address">Billing Address:</label><br>
+    <input type="text" id="Address" name="Address" required><br>
+
+    <input type="submit" value="Submit Payment">
+</form>
+
+<!-- ... remaining HTML code ... -->
+ 
                         </div>
                 </div>
 
@@ -200,44 +215,48 @@
 </html>
 
 <?php
-
-//connection established to our databases (tables) in mariaDB
+// Your database credentials
 $user = "z1917876";
 $pass = "2002Dec08";
 $serv = "courses";
-$d = "z1917876";
+$db = "z1917876";
 
 try {
-	$sn = "mysql:host=$serv;dbname=$d";
-	$p = new PDO($sn, $user, $pass);
-	$p->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOexception $ex) { // handle that exception
-	echo "Connection to database failed: " . $ex->getMessage();
-}
+    $pdo = new PDO("mysql:host=$serv;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Collect and validate user input
+        $status = $_POST['Status'] ?? 'Processing';
+        $shipAddress = filter_input(INPUT_POST, 'shipAddress', FILTER_SANITIZE_STRING);
+        $total = filter_input(INPUT_POST, 'Total', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        $empID = getLoggedInEmployeeID(); // Replace with a function that gets the logged-in employee's ID
+        $date = $_POST['Date'] ?? date('Y-m-d H:i:s');
+        $custName = filter_input(INPUT_POST, 'CustName', FILTER_SANITIZE_STRING);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Name = $_POST['Name'];
-    $ZipCode = $_POST['ZipCode'];
-    $CardNumber = $_POST['CardNumber'];
-    $SecurityOode = $_POST['SecurityCode'];
-    $Address = $_POST['Address'];
+        $name = filter_input(INPUT_POST, 'Name', FILTER_SANITIZE_STRING);
+        $zipCode = filter_input(INPUT_POST, 'ZipCode', FILTER_SANITIZE_NUMBER_INT);
+        $securityCode = filter_input(INPUT_POST, 'SecurityCode', FILTER_SANITIZE_NUMBER_INT);
+        $address = filter_input(INPUT_POST, 'Address', FILTER_SANITIZE_STRING);
+        $cardNumber = filter_input(INPUT_POST, 'CardNumber', FILTER_SANITIZE_NUMBER_INT);
 
-    try{
-        $stmt = $p->prepare("INSERT INTO PaymentInfo (Name, ZipCode, CardNumber, SecurityCode, Address) VALUES (:Name, :ZipCode, :CardNumber, :SecurityCode, :Address)");
-        $stmt->bindParam(':Name', $Name);
-        $stmt->bindParam(':ZipCode', $ZipCode);
-        $stmt->bindParam(':CardNumber', $CardNumber);
-        $stmt->bindParam(':SecurityCode', $SecurityCode);
-        $stmt->bindParam(':Address', $Address);
+        // Insert data into ORDERS table
+        $stmtOrders = $pdo->prepare("INSERT INTO ORDERS (Status, ShipAddress, Total, EmpID, Date, CustName) VALUES (:status, :shipAddress, :total, :empID, :date, :custName)");
+        $stmtOrders->execute([':status' => $status, ':shipAddress' => $shipAddress, ':total' => $total, ':empID' => $empID, ':date' => $date, ':custName' => $custName]);
 
-        $stmt->execute();
+        // Insert data into PaymentInfo table
+        $stmtPaymentInfo = $pdo->prepare("INSERT INTO PaymentInfo (Name, ZipCode, SecurityCode, Address, CardNumber) VALUES (:name, :zipCode, :securityCode, :address, :cardNumber)");
+        $stmtPaymentInfo->execute([':name' => $name, ':zipCode' => $zipCode, ':securityCode' => $securityCode, ':address' => $address, ':cardNumber' => $cardNumber]);
 
-        echo "Payment info inserted successfully.";
-    } catch(PDOException $e) {
-        echo "Error inserting payment info: " . $e->getMessage();
+        echo "Order and Payment info inserted successfully.";
     }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 
+// Function to get logged-in employee's ID (This is just a placeholder. Implement this function based on your application logic)
+function getLoggedInEmployeeID() {
+    // Implement the logic to retrieve the logged-in employee's ID
+    return 1; // Example: return the ID of the logged-in employee
+}
 ?>
