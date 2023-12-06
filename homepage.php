@@ -232,8 +232,10 @@ $productImages = array
             $productID = $row['ProdID'];
             $imageUrl = $productImages[$productName] ?? 'default_image.jpg';
 
-            echo "<div class='product-box'>";
-            echo "<img src='" . htmlspecialchars($imageUrl) . "' alt='" . htmlspecialchars($productName) . "'>";
+	    echo "<div class='product-box'>";
+	    echo "<a href='product" . htmlspecialchars($productID) . ".php'>";
+	    echo "<img src='" . htmlspecialchars($imageUrl) . "' alt='" . htmlspecialchars($productName) . "'>";
+	    echo "</a>";
             echo "<div class='product-details'>";
             echo "<h2>" . htmlspecialchars($productName) . ": $" . htmlspecialchars($productCost) . "</h2>";
             echo "<p>In Stock: " . htmlspecialchars($productAmount) . "</p>";
