@@ -84,6 +84,7 @@ if (isset($loginError)) {
     <input type="password" id="password" name="password" required>
 
     <button type="submit">Login</button>
+    <button type="button" onclick="window.location.href='homepage.php';">Go to Homepage</button>
 </form>
 
 </body>

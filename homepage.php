@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Clothing Store</title>
+	<title>Threads and Trends</title>
 	<style>
         
 	header
@@ -112,7 +112,7 @@
 </head>
 <body>
 <header>
-        <div class="website-name">Clothing Store</div>
+        <div class="website-name">Threads and Trends</div>
         <div class="button-container">
             <a href="login.php">
                 <button>
