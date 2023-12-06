@@ -179,8 +179,7 @@ catch (PDOException $e)
 
                 <div class="product-container">
 
-		<img src="https://img1.shopcider.com/product/1694662290000-tTBidp.jpg?x-oss-process
-		=image/resize,w_1050,m_lfit/quality,Q_80/interlace,1" alt="Skirt">
+		<img src="https://i5.walmartimages.com/seo/Ma-Baby-Newborn-Baby-Girls-Corduroy-Solid-Color-A-line-Skirt-for-Kids-Children-Girls_19fc4049-b39b-4933-a236-5c54721d3758.4133b4878c06a24ab42b8c2b7f4d085b.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF" alt="Skirt">
 
                 <div class="product-details box">
 

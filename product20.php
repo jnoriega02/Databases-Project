@@ -179,7 +179,8 @@ catch (PDOException $e)
 
                 <div class="product-container">
 
-                <img src="https://oldnavy.gap.com/webcontent/0054/226/614/cn54226614.jpg" alt="Winter Socks">
+		<img src="https://www.bootbarn.com/dw/image/v2/BCCF_PRD/on/demandware.static/-/Sites-master-product
+		-catalog-shp/default/dwfcf90fb2/images/489/2000377489_600_P1.JPG?sw=600&sh=600&sm=fit&q=50" alt="Winter Socks">
 
                 <div class="product-details box">
 
