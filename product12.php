@@ -179,8 +179,8 @@ catch (PDOException $e)
 
                 <div class="product-container">
 
-		<img src="https://img1.shopcider.com/product/1670824945000-pHSAya.jpg?x-oss-process=image
-		/resize,w_1050,m_lfit/quality,Q_80/interlace,1" alt="Corduroy Pants">
+		<img src="https://images.boardriders.com/globalGrey/quiksilver-products/all/default/large
+		/eqynp03129_quiksilver,f_cpp0_frt1.jpg" alt="Corduroy Pants">
 
                 <div class="product-details box">
 

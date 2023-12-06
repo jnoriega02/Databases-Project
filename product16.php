@@ -179,8 +179,7 @@ catch (PDOException $e)
 
                 <div class="product-container">
 
-		<img src="https://www.marinelayer.com/cdn/shop/files/M_H1_Archive_Andes_Sherpa
-		_Pullover_Mountain_Scene_4230103092265-Final-Web_700x.jpg?v=1697148787" alt="Mountain Jacket">
+		<img src="https://i.ebayimg.com/images/g/6sIAAOSw5K1kEnwp/s-l1200.webp" alt="Mountain Jacket">
 
                 <div class="product-details box">
 
@@ -188,7 +187,7 @@ catch (PDOException $e)
 			<?php echo "<p>In Stock: " . htmlspecialchars($productAmount) . "</p>"; ?>
 
                         <p>
-                                A sherpa jacket with mountains on it.
+                                A sherpa jacket great for mountain climbing.
                         </p>
 
                 </div>
