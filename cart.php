@@ -14,15 +14,21 @@
             height: 100vh;
         }
 
+        .home-button {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
         .container {
             text-align: center;
             width: 80%;
         }
 
-        .return-to-cart {
-            text-align: center;
-            margin-bottom: 20px;
-        }
 
         .order-summary li {
             display: flex;
@@ -35,17 +41,15 @@
             text-align: right;
         }
 
-        .return-button {
-            background-color: #0000000;
-            display: inline-block;
-            font-weight: bold;
-            font-size: 17px;
-            margin-bottom: 10px;
-            padding: 10px 20px;
+        .home-button {
+            background-color: #000000;
             color: #ffffff;
+            padding: 10px 20px;
             text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
         }
-
         .header {
             text-align: left;
             margin-top: 20px;
@@ -114,6 +118,18 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
+        .checkout-success {
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checkout-failure {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -123,8 +139,8 @@
             Threads and Trends
         </div>
 
-        <div class="return-cart-button">
-            <a href="homepage.php" class="return-button"> < Return to Homepage</a>
+        <div class="return-home">
+            <a href="homepage.php" class="home-button">Return to Homepage</a>
         </div>
 
         <div class="right-column">
@@ -209,6 +225,8 @@
                             $totalCost += $itemCost;
                             $totalItems += $quantity;
 
+                            $_SESSION['totalItems'] = $totalItems;
+
                             echo "<li>";
                             echo htmlspecialchars($product['Name']) . " - $" . htmlspecialchars($product['Cost']) . " x ";
                             echo "<form method='post' action='cart.php'>";
@@ -229,6 +247,10 @@
 
                     $finalTotal = $totalCost + $shipping + $taxes;
 
+                    $_SESSION['totalCost'] = $finalTotal;
+                    $_SESSION['totalItems'] = $totalItems;
+                    $_SESSION['taxes'] = $taxes;
+                    $_SESSION['shipping'] = $shipping;
                     echo "<li><span class='label'>Number of Items:</span> <span class='order-value'>" . $totalItems . "</span></li>";
                     echo "<li><span class='label'>Shipping:</span> <span class='order-value'>$" . number_format($shipping, 2) . "</span></li>";
                     echo "<li><span class='label'>Estimated Taxes:</span> <span class='order-value'>$" . number_format($taxes, 2) . "</span></li>";
@@ -243,11 +265,28 @@
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
+
+                    // Insert into the Cart table
+                    $cartID = isset($_SESSION['cartID']) ? $_SESSION['cartID'] : md5(uniqid(rand(), true));
+                    $_SESSION['cartID'] = $cartID;
+
+                    $insertCart = $pdo->prepare("INSERT INTO Cart (CartID, Total) VALUES (?, ?)");
+                    $insertCart->execute([$cartID, $finalTotal]);
+
+                    // Insert individual items into the CartItems table
+                    if (!empty($_SESSION['cart'])) {
+                        foreach ($_SESSION['cart'] as $prodID => $amount) {
+                            $insertCartItem = $pdo->prepare("INSERT INTO CartItems (CartID, ProdID, Amount) VALUES (?, ?, ?)");
+                            $insertCartItem->execute([$cartID, $prodID, $amount]);
+                        }
+                    }
+
+                    echo "<div class='checkout-success'>Checkout successful!</div>";
                 } else {
                     echo "Your cart is empty.";
                 }
             } catch (PDOException $ex) {
-                echo "Connection to the database failed: " . $ex->getMessage();
+                echo "<div class='checkout-failure'>Connection to the database failed: " . $ex->getMessage() . "</div>";
             }
             ?>
         </div>

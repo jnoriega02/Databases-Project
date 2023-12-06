@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,7 +195,7 @@
     <input type="submit" value="Submit Payment">
 </form>
 
-<!-- ... remaining HTML code ... -->
+
  
                         </div>
                 </div>
@@ -201,11 +204,10 @@
                 <div class="box">
                         <h2>Order Summary</h2>
                         <ul class="order-summary">
-                                <li><span class="label">Number of Items:</span> <span class="value">3</span></li>
-                                <li><span class="label">Shipping:</span> <span class="value">$5.00</span></li>
-                                <li><span class="label">Estimated Taxes:</span> <span class="value">$2.50</span></li>
-                                <li><span class="label">Order Total:</span> <span class="value">$27.50</span></li>
-                        </ul>
+                        <li><span class="label">Number of Items:</span> <span class="value"><?php echo $_SESSION['totalItems'] ?? '0'; ?></span></li>
+                        <li><span class="label">Shipping:</span> <span class="value">$<?php echo number_format($_SESSION['shipping'] ?? 0, 2); ?></span></li>
+                         <li><span class="label">Estimated Taxes:</span> <span class="value">$<?php echo number_format($_SESSION['taxes'] ?? 0, 2); ?></span></li>
+                         <li><span class="label">Order Total:</span> <span class="value">$<?php echo number_format($_SESSION['totalCost'] ?? 0, 2); ?></span></li> </ul>
                 </div>
         </div>
 </div>
@@ -215,6 +217,7 @@
 </html>
 
 <?php
+
 // Your database credentials
 $user = "z1917876";
 $pass = "2002Dec08";
@@ -229,8 +232,11 @@ try {
         // Collect and validate user input
         $status = $_POST['Status'] ?? 'Processing';
         $shipAddress = filter_input(INPUT_POST, 'shipAddress', FILTER_SANITIZE_STRING);
-        $total = filter_input(INPUT_POST, 'Total', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-        $empID = getLoggedInEmployeeID(); // Replace with a function that gets the logged-in employee's ID
+        $total = $_SESSION['totalCost'] ?? 0;
+        $totalItems = $_SESSION['totalItems'] ?? 0;
+        $shipping = $_SESSION['shipping'] ?? 0;
+        $taxes = $_SESSION['taxes'] ?? 0;
+        $empID = 0; // Replace with a function that gets the logged-in employee's ID
         $date = $_POST['Date'] ?? date('Y-m-d H:i:s');
         $custName = filter_input(INPUT_POST, 'CustName', FILTER_SANITIZE_STRING);
 
@@ -241,8 +247,8 @@ try {
         $cardNumber = filter_input(INPUT_POST, 'CardNumber', FILTER_SANITIZE_NUMBER_INT);
 
         // Insert data into ORDERS table
-        $stmtOrders = $pdo->prepare("INSERT INTO ORDERS (Status, ShipAddress, Total, EmpID, Date, CustName) VALUES (:status, :shipAddress, :total, :empID, :date, :custName)");
-        $stmtOrders->execute([':status' => $status, ':shipAddress' => $shipAddress, ':total' => $total, ':empID' => $empID, ':date' => $date, ':custName' => $custName]);
+        $stmtOrders = $pdo->prepare("INSERT INTO ORDERS (Status, ShipAddress, TOTAL, EmpID, Date, CustName) VALUES (:status, :shipAddress, :total, :empID, :date, :custName)");
+        $stmtOrders->execute([':status' => $status, ':shipAddress' => $shipAddress, ':totalCost' => $total, ':empID' => $empID, ':date' => $date, ':custName' => $custName]);
 
         // Insert data into PaymentInfo table
         $stmtPaymentInfo = $pdo->prepare("INSERT INTO PaymentInfo (Name, ZipCode, SecurityCode, Address, CardNumber) VALUES (:name, :zipCode, :securityCode, :address, :cardNumber)");
@@ -254,9 +260,6 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-// Function to get logged-in employee's ID (This is just a placeholder. Implement this function based on your application logic)
-function getLoggedInEmployeeID() {
-    // Implement the logic to retrieve the logged-in employee's ID
-    return 1; // Example: return the ID of the logged-in employee
-}
+
+
 ?>
